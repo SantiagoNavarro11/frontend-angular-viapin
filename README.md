@@ -46,3 +46,35 @@ ng serve --open
 La aplicación Frontend estará disponible en http://localhost:4200/.
 
 Recuerda: Para que las operaciones CRUD funcionen, el Backend de Laravel debe estar corriendo en su terminal aparte (php artisan serve).
+
+📝 Nota Súper Importante: La Lógica de "Eliminar" Colaboradores
+
+ En la aplicación tenemos dos formas de sacar a alguien del listado, y son muy diferentes a nivel de base de datos. Esto lo decidimos para no borrar la historia.
+
+1. Desactivación (Mi Opción Favorita: Ocultar)
+
+Yo lo llamo Borrado Lógico. Esto es como "mover a la papelera".
+
+¿Cuándo lo uso? Cuando estoy editando a un colaborador y cambio su Estado de Activo a Inactivo.
+
+¿Qué hace realmente?
+
+En la Base de Datos: El registro NO se borra. Simplemente queda marcado con la etiqueta Inactivo.
+
+En la Tabla/Lista: El sistema (la consulta del Backend) solo trae a los que están Activos. Por eso, el colaborador desaparece de la vista principal.
+
+Conclusión: Esto es ideal para el dearrollo y control. Si necesito saber quién estuvo en la empresa hace dos años, la información sigue ahí, aunque no moleste en el listado diario.
+
+2. Eliminación Definitiva (¡Borrar para Siempre!)
+
+Esto es el Borrado Físico.
+
+¿Cuándo lo uso? Cuando doy clic en el botón ❌ Eliminar en la tabla.
+
+¿Qué hace realmente?
+
+En la Base de Datos: ¡El registro se va para siempre! No hay marcha atrás.
+
+Conclusión: Solo debemos usarlo si estamos 100% seguros de que esa información no la vamos a necesitar nunca más. 
+
+Gracias , ahora si no hay mas aclaraciones. 
