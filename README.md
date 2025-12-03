@@ -1,64 +1,43 @@
-🚀 Colaboradores App - Frontend (Angular)
+🚀 MANUAL DE EJECUCIÓN RÁPIDA DEL FRONTEND (ANGULAR)
 
-Este repositorio contiene el código fuente del Frontend de la aplicación de gestión de colaboradores. El proyecto está construido con Angular 17+ y requiere que un servicio de Backend RESTful esté operativo para funcionar correctamente.
+Este manual asume que ya has clonado el repositorio y que tu terminal está ubicada en la carpeta raíz del proyecto Angular.
 
-📋 Requisitos del Sistema
+📋 Requisitos Mínimos
 
-Para poder instalar y ejecutar este proyecto, el desarrollador debe tener instalado en su máquina:
+Asegúrate de tener instalados:
 
-Node.js y npm: Se recomienda la versión LTS más reciente.
+Node.js y npm (Se recomienda la versión LTS más reciente).
 
-Angular CLI: El cliente de línea de comandos de Angular debe estar instalado de forma global:
+Angular CLI instalado globalmente (npm install -g @angular/cli).
 
-npm install -g @angular/cli
+🛠️ Comandos Esenciales de Ejecución
 
+Sigue esta secuencia de comandos para instalar las dependencias y levantar el servidor de desarrollo.
 
+PASO 1: Instalar Dependencias (Librerías)
 
-Git: Para la clonación del repositorio.
+Ejecuta este comando una sola vez (o cuando se actualice el package.json) para descargar todas las librerías necesarias.
 
-🛠️ Pasos de Instalación y Configuración - Guía de Consola
-
-Sigue esta secuencia de comandos, ejecutándolos directamente en tu terminal o consola, para poner el proyecto en marcha:
-
-Paso 1: Clonar y Acceder al Repositorio
-
-Abre tu terminal (CMD, PowerShell, Bash, etc.) y ejecuta los siguientes comandos:
-
-# 1. CLONAR: Descarga el código fuente del proyecto.
-#    ***IMPORTANTE: Reemplaza [URL_DEL_REPOSITORIO] con la dirección HTTPS o SSH real de tu proyecto.***
-git clone [URL_DEL_REPOSITORIO]
-
-# 2. ACCEDER: Navega al directorio recién creado.
-#    ***EJEMPLO: Si tu repositorio se llama 'colaboradores-frontend', ejecuta:***
-cd [nombre-del-proyecto-frontend]
-
-
-Paso 2: Instalar Dependencias (Librerías)
-
-Una vez dentro de la carpeta del proyecto, ejecuta el siguiente comando para descargar todas las dependencias de Angular, Tailwind CSS, RxJS, etc.
-
-# Instala todas las dependencias listadas en package.json
 npm install
 
 
-Paso 3: Configurar el Endpoint de la API (Solo si es necesario)
+PASO 2: Configurar el Endpoint de la API (Si Aplica)
 
-Si el Backend de la aplicación no está corriendo en http://localhost:8000, debes ajustar la URL del API en el servicio principal.
+IMPORTANTE: Si el Backend no está corriendo en http://localhost:8000, debes editar manualmente la URL de la API.
 
 Ruta del Archivo a Editar: src/app/services/user.service.ts
 
-Localiza y modifica la línea de la URL para que apunte al host y puerto correcto de tu Backend:
+Modificar: La variable private apiUrl para que apunte a la dirección correcta de tu Backend.
 
-// En user.service.ts, busca y edita esta línea si tu API no está en el puerto 8000
-private apiUrl = 'http://[HOST_DE_TU_API]:[PUERTO]/api/users';
+PASO 3: Iniciar el Servidor de Desarrollo
 
+Este comando compila la aplicación, levanta el servidor de Angular y abre automáticamente la aplicación en tu navegador.
 
-Paso 4: Ejecutar el Servidor de Desarrollo
-
-Ahora, compila y levanta el servidor de desarrollo de Angular. Esto abrirá la aplicación en tu navegador.
-
-# Compila el proyecto, inicia el servidor en http://localhost:4200/ y abre el navegador
 ng serve --open
 
 
-Si la compilación es exitosa, el navegador se abrirá mostrando la aplicación, y ya podrás interactuar con el CRUD de colaboradores. Recuerda: El Backend debe estar corriendo para que las operaciones de Guardar, Actualizar y Eliminar funcionen.
+✅ FINALIZADO:
+
+La aplicación Frontend estará disponible en http://localhost:4200/.
+
+Recuerda: Para que las operaciones CRUD funcionen, el Backend de Laravel debe estar corriendo en su terminal aparte (php artisan serve).
