@@ -99,17 +99,27 @@ export class UsersListComponent implements OnInit {
 
   /**
    * @method consultar
-   * @description Llama al servicio para obtener la lista de usuarios. Maneja la respuesta reactiva.
+   * @description Llama al servicio para obtener la lista de colaboradores.
+   * Implementa el manejo de error para mostrar el mensaje en la interfaz.
    */
   consultar() {
+    this.errorMessage = ''; // Limpiamos errores previos
+
     this.userService.getUsers().subscribe({
       next: (resp: any) => {
-        // Asumiendo que el API de Laravel devuelve { data: [...] }
-        this.users = resp.data;
+        // Lógica de éxito: asignar datos
+        this.users = resp.data || [];
+        this.cd.detectChanges();
       },
       error: (err) => {
-        this.errorMessage = '❌ Error al cargar el listado. Revisa la consola para más detalles.';
-        this.clearMessages();
+        // ✅ CORRECCIÓN CLAVE: Asignamos el mensaje legible del servicio (Status 0 o 4xx).
+        this.errorMessage =
+          err instanceof Error && err.message
+            ? err.message // <--- ESTO toma el mensaje: "Error de conexión..."
+            : '❌ Error desconocido al cargar usuarios.';
+
+        this.cd.detectChanges(); // Aseguramos que el banner se actualice
+        this.clearMessages(); // Limpiamos el mensaje después de un tiempo
         console.error('Error al consultar usuarios:', err);
       },
     });
