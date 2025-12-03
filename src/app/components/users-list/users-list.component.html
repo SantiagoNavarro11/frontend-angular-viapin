@@ -1,0 +1,138 @@
+<h2>👥 Listado de Colaboradores</h2>
+
+<div class="actions">
+  <button (click)="consultar()">🔄 Refrescar Listado</button>
+  <button (click)="iniciarCreacion()">➕ Nuevo Colaborador</button>
+</div>
+
+<!-- Mensajes de Alerta -->
+<div class="messages">
+  <div *ngIf="successMessage && !operationSuccess" class="alert success-alert">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert error-alert">
+    {{ errorMessage }}
+    <button (click)="errorMessage = ''" class="close-alert">✖️</button>
+  </div>
+</div>
+<hr />
+
+<!-- Contenedor del Formulario/Modal -->
+<div *ngIf="isEditing" class="form-container">
+  <div *ngIf="operationSuccess" class="success-modal">
+    <h3>✅ ¡Operación Exitosa!</h3>
+    <p>{{ successMessage }}</p>
+    <button (click)="cerrarModalYFormulario()" class="btn-primary">Aceptar y Cerrar</button>
+  </div>
+
+  <ng-container *ngIf="!operationSuccess">
+    <h3>
+      {{
+        currentUser.id === 0
+          ? 'Registro de Nuevo Colaborador'
+          : 'Editar Colaborador ID: ' + currentUser.id
+      }}
+    </h3>
+
+    <form (ngSubmit)="guardarUsuario()">
+      <div class="form-group">
+        <label for="nombre">Nombre Completo:</label>
+        <input
+          type="text"
+          id="nombre"
+          [(ngModel)]="currentUser.nombre_completo"
+          name="nombre"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" [(ngModel)]="currentUser.email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="departamento">Departamento:</label>
+        <input
+          type="text"
+          id="departamento"
+          [(ngModel)]="currentUser.departamento"
+          name="departamento"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="telefono">Telefono:</label>
+        <input
+          type="text"
+          id="telefono"
+          [(ngModel)]="currentUser.telefono"
+          name="telefono"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="fecha">Fecha de Registro:</label>
+        <input
+          type="date"
+          id="fecha"
+          [(ngModel)]="currentUser.fecha_registro"
+          name="fecha_registro"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select id="estado" [(ngModel)]="currentUser.estado" name="estado" required>
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">
+          {{ currentUser.id === 0 ? 'Guardar' : 'Actualizar' }}
+        </button>
+        <button type="button" (click)="cancelarEdicion()" class="btn-secondary">Cancelar</button>
+      </div>
+    </form>
+  </ng-container>
+</div>
+
+<table *ngIf="users.length > 0 && !isEditing; else noData" class="user-data-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Departamento</th>
+      <th>Telefono</th>
+      <th>Registro</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let u of users">
+      <td>{{ u.id }}</td>
+      <td>{{ u.nombre_completo }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.departamento }}</td>
+      <td>{{ u.telefono }}</td>
+      <td>{{ u.fecha_registro }}</td>
+      <td>{{ u.estado }}</td>
+      <td>
+        <button (click)="seleccionarUsuario(u)" class="btn-edit">✏️ Editar</button>
+        <button (click)="eliminar(u.id)" class="btn-delete">❌ Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noData>
+  <p *ngIf="!isEditing">No hay colaboradores registrados en el sistema.</p>
+</ng-template>
