@@ -1,59 +1,64 @@
-# FrontendViapin
+🚀 Colaboradores App - Frontend (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.1.
+Este repositorio contiene el código fuente del Frontend de la aplicación de gestión de colaboradores. El proyecto está construido con Angular 17+ y requiere que un servicio de Backend RESTful esté operativo para funcionar correctamente.
 
-## Development server
+📋 Requisitos del Sistema
 
-To start a local development server, run:
+Para poder instalar y ejecutar este proyecto, el desarrollador debe tener instalado en su máquina:
 
-```bash
-ng serve
-```
+Node.js y npm: Se recomienda la versión LTS más reciente.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Angular CLI: El cliente de línea de comandos de Angular debe estar instalado de forma global:
 
-## Code scaffolding
+npm install -g @angular/cli
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Git: Para la clonación del repositorio.
 
-```bash
-ng generate --help
-```
+🛠️ Pasos de Instalación y Configuración - Guía de Consola
 
-## Building
+Sigue esta secuencia de comandos, ejecutándolos directamente en tu terminal o consola, para poner el proyecto en marcha:
 
-To build the project run:
+Paso 1: Clonar y Acceder al Repositorio
 
-```bash
-ng build
-```
+Abre tu terminal (CMD, PowerShell, Bash, etc.) y ejecuta los siguientes comandos:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+# 1. CLONAR: Descarga el código fuente del proyecto.
+#    ***IMPORTANTE: Reemplaza [URL_DEL_REPOSITORIO] con la dirección HTTPS o SSH real de tu proyecto.***
+git clone [URL_DEL_REPOSITORIO]
 
-## Running unit tests
+# 2. ACCEDER: Navega al directorio recién creado.
+#    ***EJEMPLO: Si tu repositorio se llama 'colaboradores-frontend', ejecuta:***
+cd [nombre-del-proyecto-frontend]
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
 
-```bash
-ng test
-```
+Paso 2: Instalar Dependencias (Librerías)
 
-## Running end-to-end tests
+Una vez dentro de la carpeta del proyecto, ejecuta el siguiente comando para descargar todas las dependencias de Angular, Tailwind CSS, RxJS, etc.
 
-For end-to-end (e2e) testing, run:
+# Instala todas las dependencias listadas en package.json
+npm install
 
-```bash
-ng e2e
-```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Paso 3: Configurar el Endpoint de la API (Solo si es necesario)
 
-## Additional Resources
+Si el Backend de la aplicación no está corriendo en http://localhost:8000, debes ajustar la URL del API en el servicio principal.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Ruta del Archivo a Editar: src/app/services/user.service.ts
+
+Localiza y modifica la línea de la URL para que apunte al host y puerto correcto de tu Backend:
+
+// En user.service.ts, busca y edita esta línea si tu API no está en el puerto 8000
+private apiUrl = 'http://[HOST_DE_TU_API]:[PUERTO]/api/users';
+
+
+Paso 4: Ejecutar el Servidor de Desarrollo
+
+Ahora, compila y levanta el servidor de desarrollo de Angular. Esto abrirá la aplicación en tu navegador.
+
+# Compila el proyecto, inicia el servidor en http://localhost:4200/ y abre el navegador
+ng serve --open
+
+
+Si la compilación es exitosa, el navegador se abrirá mostrando la aplicación, y ya podrás interactuar con el CRUD de colaboradores. Recuerda: El Backend debe estar corriendo para que las operaciones de Guardar, Actualizar y Eliminar funcionen.
