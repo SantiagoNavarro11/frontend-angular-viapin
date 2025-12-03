@@ -2,6 +2,8 @@
 
 Este manual asume que ya has clonado el repositorio y que tu terminal está ubicada en la carpeta raíz del proyecto Angular.
 
+#Este repo lo puede poner en la misma carpeta donde ubico el back.. 
+
 📋 Requisitos Mínimos
 
 Asegúrate de tener instalados:
@@ -18,7 +20,7 @@ PASO 1: Instalar Dependencias (Librerías)
 
 Ejecuta este comando una sola vez (o cuando se actualice el package.json) para descargar todas las librerías necesarias.
 
-#abre una terminal dentro del proyecto y ejecuta el comando
+#abre una terminal dentro del proyecto y ejecuta el comando 
 npm install
 
 
