@@ -18,6 +18,7 @@ PASO 1: Instalar Dependencias (Librerías)
 
 Ejecuta este comando una sola vez (o cuando se actualice el package.json) para descargar todas las librerías necesarias.
 
+#abre una terminal dentro del proyecto y ejecuta el comando
 npm install
 
 
@@ -28,6 +29,8 @@ IMPORTANTE: Si el Backend no está corriendo en http://localhost:8000, debes edi
 Ruta del Archivo a Editar: src/app/services/user.service.ts
 
 Modificar: La variable private apiUrl para que apunte a la dirección correcta de tu Backend.
+
+#En este caso no creo que aplique.
 
 PASO 3: Iniciar el Servidor de Desarrollo
 
