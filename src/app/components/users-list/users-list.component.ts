@@ -108,7 +108,8 @@ export class UsersListComponent implements OnInit {
     this.userService.getUsers().subscribe({
       next: (resp: any) => {
         // Lógica de éxito: asignar datos
-        this.users = resp.data || [];
+        //this.users = resp.data || []; // Antes: todos los usuarios filtrado por todos incluyecdo Inactivos /por buen practica solo los activos
+        this.users = (resp.data || []).filter((user: User) => user.estado === 'Activo');
         this.cd.detectChanges();
       },
       error: (err) => {
